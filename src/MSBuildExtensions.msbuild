@@ -34,12 +34,24 @@
   <PropertyGroup>
     <OutputPath>$(MSBuildProjectDirectory)\..\_build</OutputPath>
     <SolutionDir>$(MSBuildProjectDirectory)</SolutionDir>
+    <SolutionPath>$(SolutionDir)\MSBuildExtensions.sln</SolutionPath>
     <RestorePackages>true</RestorePackages>
     <BuildPackage>true</BuildPackage>
     <PackageOutputDir>$(OutputPath)\NuGet</PackageOutputDir>
     <ProjectPath>$(MSBuildProjectDirectory)\ImaginaryRealities.MSBuildExtensions.nuspec</ProjectPath>
     <BuildVersion Condition="'$(BuildVersion)'==''">0.0.1-alpha</BuildVersion>
   </PropertyGroup>
+
+  <!--
+  
+  The BuildConfigurations item group defines the valid build configurations
+  that will be built by the automated build process.
+  
+  -->
+  <ItemGroup>
+    <BuildConfigurations Include="Debug"/>
+    <BuildConfigurations Include="Release"/>
+  </ItemGroup>
   
   <!--
   
@@ -49,7 +61,8 @@
   -->
   <PropertyGroup>
     <BuildDependsOn>
-      _CreateOutputDirectories
+      _CreateOutputDirectories;
+      _BuildAllConfigurations
     </BuildDependsOn>
   </PropertyGroup>
   <Target Name="Build" DependsOnTargets="$(BuildDependsOn)"/>
@@ -61,6 +74,9 @@
   
   -->
   <Target Name="Clean">
+    <MSBuild Projects="$(SolutionPath)"
+             Targets="Clean"
+             Properties="Configuration=%(BuildConfigurations.Identity)"/>
     <RemoveDir Directories="$(OutputPath)"
                Condition="Exists('$(OutputPath)')"/>
   </Target>
@@ -74,6 +90,32 @@
   <Target Name="_CreateOutputDirectories">
     <MakeDir Directories="$(PackageOutputDir)" 
              Condition="!Exists('$(PackageOutputDir)')"/>
+  </Target>
+  
+  <!--
+  
+  The _BuildAllConfigurations target will build all configurations of the
+  project.
+  
+  -->
+  <Target Name="_BuildAllConfigurations">
+    <MSBuild Projects="$(MSBuildProjectFullPath)"
+             Targets="_BuildConfiguration"
+             Properties="Configuration=%(BuildConfigurations.Identity)"/>
+  </Target>
+  
+  <!--
+  
+  The _BuildConfiguration target will build a single configuration of the
+  project.
+  
+  -->
+  <UsingTask TaskName="Xunit.Runner.MSBuild.xunit"
+             AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runners.1.9.1\tools\xunit.runner.msbuild.dll"/>
+  <Target Name="_BuildConfiguration">
+    <MSBuild Projects="$(SolutionPath)"
+             Targets="Build"/>
+    <xunit Assembly="$(MSBuildProjectDirectory)\MSBuildExtensionsUnitTests\bin\$(Configuration)\ImaginaryRealities.MSBuild.UnitTests.dll"/>
   </Target>
   
   <!--
