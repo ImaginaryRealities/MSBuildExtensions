@@ -127,6 +127,7 @@
     <Compile Include="$(VersionInfoPath)">
       <Link>Properties\VersionInfo.cs</Link>
     </Compile>
+    <Compile Include="GenerateVersionInfo.cs" />
     <Compile Include="ParseVersionNumber.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
