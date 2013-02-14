@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ImaginaryRealities.MSBuildExtensions</id>
+    <version>1.0.0</version>
+    <title>ImaginaryRealities MSBuild Extensions</title>
+    <authors>ImaginaryRealities, LLC</authors>
+    <owners>ImaginaryRealities, LLC</owners>
+    <description>The MSBuild extensions are a set of custom tasks and other MSBuild extensions that ImaginaryRealities uses to build our Windows and .NET software using the .NET MSBuild tool. The MSBuild Extensions are packaged as a solution-level NuGet package.</description>
+    <releaseNotes>Initial release of the MSBuild Extensions.</releaseNotes>
+    <summary>Custom MSBuild tasks and other extensions.</summary>
+    <language>en-us</language>
+    <projectUrl>http://imaginaryrealities.github.com/MSBuildExtensions</projectUrl>
+    <!--<iconUrl>TODO</iconUrl>-->
+    <licenseUrl>http://imaginaryrealities.github.com/MSBuildExtensions/license.html</licenseUrl>
+    <copyright>Copyright 2013 ImaginaryRealities, LLC</copyright>
+    <requireLicenseAcceptance>true</requireLicenseAcceptance>
+  </metadata>
+</package>
