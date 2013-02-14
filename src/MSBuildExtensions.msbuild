@@ -39,7 +39,7 @@
     <BuildPackage>true</BuildPackage>
     <PackageOutputDir>$(OutputPath)\NuGet</PackageOutputDir>
     <ProjectPath>$(MSBuildProjectDirectory)\ImaginaryRealities.MSBuildExtensions.nuspec</ProjectPath>
-    <BuildVersion Condition="'$(BuildVersion)'==''">0.0.1-alpha</BuildVersion>
+    <BuildVersion Condition="'$(BuildVersion)'==''">1.0.0</BuildVersion>
   </PropertyGroup>
 
   <!--
