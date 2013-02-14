@@ -16,4 +16,10 @@
     <copyright>Copyright 2013 ImaginaryRealities, LLC</copyright>
     <requireLicenseAcceptance>true</requireLicenseAcceptance>
   </metadata>
+  <files>
+    <file src="MSBuildExtensions\bin\Release\ImaginaryRealities.MSBuild.dll" target="tools"/>
+    <file src="MSBuildExtensions\bin\Release\ImaginaryRealities.MSBuild.pdb" target="tools"/>
+    <file src="MSBuildExtensions\bin\Release\ImaginaryRealities.MSBuild.xml" target="tools"/>
+    <file src="MSBuildExtensions\*.cs" target="src"/>
+  </files>
 </package>
