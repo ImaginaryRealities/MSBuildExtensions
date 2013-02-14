@@ -67,6 +67,7 @@ namespace ImaginaryRealities.MSBuild.UnitTests
             Assert.Equal("33", this.task.PatchVersion);
             Assert.Null(this.task.PrereleaseVersion);
             Assert.Null(this.task.BuildVersion);
+            Assert.Equal("0", this.task.BuildNumber);
         }
 
         /// <summary>
@@ -84,6 +85,7 @@ namespace ImaginaryRealities.MSBuild.UnitTests
             Assert.Equal("3", this.task.PatchVersion);
             Assert.Equal("alpha.1", this.task.PrereleaseVersion);
             Assert.Equal("build.25", this.task.BuildVersion);
+            Assert.Equal("25", this.task.BuildNumber);
         }
     }
 }

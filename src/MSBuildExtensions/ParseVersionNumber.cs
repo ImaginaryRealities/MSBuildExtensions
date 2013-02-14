@@ -11,6 +11,7 @@
 
 namespace ImaginaryRealities.MSBuild
 {
+    using System;
     using System.Text.RegularExpressions;
 
     using Microsoft.Build.Framework;
@@ -33,12 +34,36 @@ namespace ImaginaryRealities.MSBuild
     public class ParseVersionNumber : Task
     {
         /// <summary>
+        /// A regular expression that is used to match a decimal number for the
+        /// build number in a semantic version number.
+        /// </summary>
+        private static readonly Regex BuildNumberRegex = new Regex(
+            @"^\d+$", RegexOptions.Compiled | RegexOptions.Singleline);
+
+        /// <summary>
         /// The regular expression to use to parse semantic version numbers.
         /// </summary>
         private static readonly Regex VersionNumberRegex =
             new Regex(
                 @"^(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)(-(?<prerelease>[A-Za-z0-9\.\-]+))?(\+(?<build>[A-Za-z0-9\.\-]+))?$",
                 RegexOptions.Compiled | RegexOptions.Singleline);
+
+        /// <summary>
+        /// Gets the optional build number component from the version number.
+        /// </summary>
+        /// <value>
+        /// The build number from the build version of the semantic version
+        /// number.
+        /// </value>
+        /// <remarks>
+        /// <para>
+        /// The build number is retrieved by parsing the build version
+        /// component of the semantic version and returning the first part that
+        /// is a decimal number.
+        /// </para>
+        /// </remarks>
+        [Output]
+        public string BuildNumber { get; private set; }
 
         /// <summary>
         /// Gets the optional build version component from the version number.
@@ -120,7 +145,28 @@ namespace ImaginaryRealities.MSBuild
             var prereleaseGroup = match.Groups["prerelease"];
             this.PrereleaseVersion = prereleaseGroup.Success ? prereleaseGroup.Value : null;
             var buildGroup = match.Groups["build"];
-            this.BuildVersion = buildGroup.Success ? buildGroup.Value : null;
+            this.BuildNumber = "0";
+            if (buildGroup.Success)
+            {
+                this.BuildVersion = buildGroup.Value;
+                var parts = this.BuildVersion.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+                foreach (var part in parts)
+                {
+                    match = BuildNumberRegex.Match(part);
+                    if (!match.Success)
+                    {
+                        continue;
+                    }
+
+                    this.BuildNumber = part;
+                    break;
+                }
+            }
+            else
+            {
+                this.BuildVersion = null;
+            }
+
             return true;
         }
     }

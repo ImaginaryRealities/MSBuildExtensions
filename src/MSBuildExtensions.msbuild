@@ -55,12 +55,132 @@
   
   <!--
   
+  The ParseVersionNumber task is used to parse a semantic version number and
+  output the version number components. This task is nearly identical to the
+  ParseVersionNumber class in the MSBuildExtensions project, but is redefined
+  here to bootstrap the process of building the MSBuild Extensions project.
+  
+  -->
+  <UsingTask TaskName="ParseVersionNumber"
+             TaskFactory="CodeTaskFactory"
+             AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+      <VersionNumber Required="true"/>
+      <MajorVersion Output="true"/>
+      <MinorVersion Output="true"/>
+      <PatchVersion Output="true"/>
+      <PrereleaseVersion Output="true"/>
+      <BuildVersion Output="true"/>
+      <BuildNumber Output="true"/>
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System.Text.RegularExpressions"/>
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+        var buildNumberRegex = new Regex(@"^\d+$", RegexOptions.Compiled | RegexOptions.Singleline);
+        var versionNumberRegex = new Regex(
+          @"^(?<major>\d+)\.(?<minor>\d+)\.(?<patch>\d+)(-(?<prerelease>[A-Za-z0-9\.\-]+))?(\+(?<build>[A-Za-z0-9\.\-]+))?$",
+          RegexOptions.Singleline);
+        var match = versionNumberRegex.Match(this.VersionNumber);
+        if (!match.Success)
+        {
+          return false;
+        }
+        
+        this.MajorVersion = match.Groups["major"].Value;
+        this.MinorVersion = match.Groups["minor"].Value;
+        this.PatchVersion = match.Groups["patch"].Value;
+        var prereleaseGroup = match.Groups["prerelease"];
+        this.PrereleaseVersion = prereleaseGroup.Success ? prereleaseGroup.Value : null;
+        var buildGroup = match.Groups["build"];
+        this.BuildNumber = "0";
+        if (buildGroup.Success)
+        {
+          this.BuildVersion = buildGroup.Value;
+          var parts = this.BuildVersion.Split(new[] { '.' }, StringSplitOptions.RemoveEmptyEntries);
+          foreach (var part in parts)
+          {
+            match = buildNumberRegex.Match(part);
+            if (!match.Success)
+            {
+              continue;
+            }
+            
+            this.BuildNumber = part;
+            break;
+          }
+        }
+        else
+        {
+          this.BuildVersion = null;
+        }
+        ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+  
+  <!--
+  
+  The GenerateVersionInfo task will generate the VersionInfo.cs file with the
+  name of the build configuration and the correct version numbers for the
+  current product build. This task is identical to the GenerateVersionNumber
+  class in the MSBuildExtensions project, but is defined here to bootstrap the
+  process of building the project.
+  
+  -->
+  <UsingTask TaskName="GenerateVersionInfo"
+             TaskFactory="CodeTaskFactory"
+             AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
+    <ParameterGroup>
+      <OutputPath Required="true"/>
+      <AssemblyConfiguration Required="true"/>
+      <AssemblyFileVersion Required="true"/>
+      <AssemblyInformationalVersion Required="true"/>
+      <AssemblyVersion Required="true"/>
+    </ParameterGroup>
+    <Task>
+      <Using Namespace="System.CodeDom"/>
+      <Using Namespace="System.CodeDom.Compiler"/>
+      <Using Namespace="System.IO"/>
+      <Using Namespace="System.Reflection"/>
+      <Code Type="Fragment" Language="cs">
+        <![CDATA[
+        var codeCompileUnit = new CodeCompileUnit();
+        codeCompileUnit.AssemblyCustomAttributes.Add(
+          new CodeAttributeDeclaration(
+            new CodeTypeReference(typeof(AssemblyConfigurationAttribute)),
+            new CodeAttributeArgument(new CodePrimitiveExpression(this.AssemblyConfiguration))));
+        codeCompileUnit.AssemblyCustomAttributes.Add(
+          new CodeAttributeDeclaration(
+            new CodeTypeReference(typeof(AssemblyFileVersionAttribute)),
+            new CodeAttributeArgument(new CodePrimitiveExpression(this.AssemblyFileVersion))));
+        codeCompileUnit.AssemblyCustomAttributes.Add(
+          new CodeAttributeDeclaration(
+            new CodeTypeReference(typeof(AssemblyInformationalVersionAttribute)),
+            new CodeAttributeArgument(new CodePrimitiveExpression(this.AssemblyInformationalVersion))));
+        codeCompileUnit.AssemblyCustomAttributes.Add(
+          new CodeAttributeDeclaration(
+            new CodeTypeReference(typeof(AssemblyVersionAttribute)),
+            new CodeAttributeArgument(new CodePrimitiveExpression(this.AssemblyVersion))));
+        using (var provider = CodeDomProvider.CreateProvider("csharp"))
+        using (var writer = File.CreateText(this.OutputPath))
+        {
+          provider.GenerateCodeFromCompileUnit(codeCompileUnit, writer, new CodeGeneratorOptions());
+        }
+        ]]>
+      </Code>
+    </Task>
+  </UsingTask>
+  
+  <!--
+  
   The Build target will build and package the MSBuild Extensions for deployment
   to projects using NuGet.
   
   -->
   <PropertyGroup>
     <BuildDependsOn>
+      _CreateVersionNumberProperties;
       _CreateOutputDirectories;
       _BuildAllConfigurations
     </BuildDependsOn>
@@ -85,6 +205,33 @@
   
   <!--
   
+  The _CreateVersionNumberProperties target will parse the semantic version
+  number for the build and will generate the .NET version numbers that will be
+  used for the file and assembly versions for the generated assemblies.
+  
+  -->
+  <Target Name="_CreateVersionNumberProperties">
+    <ParseVersionNumber VersionNumber="$(BuildVersion)">
+      <Output TaskParameter="MajorVersion" PropertyName="MajorVersion"/>
+      <Output TaskParameter="MinorVersion" PropertyName="MinorVersion"/>
+      <Output TaskParameter="PatchVersion" PropertyName="PatchVersion"/>
+      <Output TaskParameter="BuildNumber" PropertyName="BuildNumber"/>
+    </ParseVersionNumber>
+    <CreateProperty Value="$(MajorVersion).$(MinorVersion).$(PatchVersion).$(BuildNumber)">
+      <Output TaskParameter="Value" PropertyName="ProductVersion"/>
+    </CreateProperty>
+    <CreateProperty Value="$(MajorVersion).0.0.0"
+                    Condition="'0' != '$(MajorVersion)'">
+      <Output TaskParameter="Value" PropertyName="AssemblyVersion"/>
+    </CreateProperty>
+    <CreateProperty Value="1.0.0.0"
+                    Condition="'0' == '$(MajorVersion)'">
+      <Output TaskParameter="Value" PropertyName="AssemblyVersion"/>
+    </CreateProperty>
+  </Target>
+  
+  <!--
+  
   The _CreateOutputDirectories target will create the directories where the
   NuGet packages for the project will be output to.
   
@@ -103,7 +250,7 @@
   <Target Name="_BuildAllConfigurations">
     <MSBuild Projects="$(MSBuildProjectFullPath)"
              Targets="_BuildConfiguration"
-             Properties="Configuration=%(BuildConfigurations.Identity)"/>
+             Properties="Configuration=%(BuildConfigurations.Identity);ProductVersion=$(ProductVersion);AssemblyVersion=$(AssemblyVersion)"/>
   </Target>
   
   <!--
@@ -115,8 +262,16 @@
   <UsingTask TaskName="Xunit.Runner.MSBuild.xunit"
              AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runners.1.9.1\tools\xunit.runner.msbuild.dll"/>
   <Target Name="_BuildConfiguration">
+    <MakeDir Directories="$(OutputPath)\$(Configuration)"
+             Condition="!Exists('$(OutputPath)\$(Configuration)')"/>
+    <GenerateVersionInfo OutputPath="$(OutputPath)\$(Configuration)\VersionInfo.cs"
+                         AssemblyConfiguration="$(Configuration)"
+                         AssemblyFileVersion="$(ProductVersion)"
+                         AssemblyInformationalVersion="$(ProductVersion)"
+                         AssemblyVersion="$(AssemblyVersion)"/>
     <MSBuild Projects="$(SolutionPath)"
-             Targets="Build"/>
+             Targets="Build"
+             Properties="VersionInfoPath=$(OutputPath)\$(Configuration)\VersionInfo.cs"/>
     <xunit Assembly="$(MSBuildProjectDirectory)\MSBuildExtensionsUnitTests\bin\$(Configuration)\ImaginaryRealities.MSBuild.UnitTests.dll"/>
   </Target>
   
