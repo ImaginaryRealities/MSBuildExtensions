@@ -79,6 +79,8 @@
              Properties="Configuration=%(BuildConfigurations.Identity)"/>
     <RemoveDir Directories="$(OutputPath)"
                Condition="Exists('$(OutputPath)')"/>
+    <RemoveDir Directories="packages"
+               Condition="Exists('$(Packages)')"/>
   </Target>
   
   <!--
@@ -125,6 +127,8 @@
   -->
   <Import Project=".nuget\NuGet.targets"/>
   <PropertyGroup>
+    <PackagesConfig>$(MSBuildProjectDirectory)\.nuget\packages.config</PackagesConfig>
+    <RestoreCommand>$(NuGetCommand) install "$(PackagesConfig)" -source "$(PackageSources)"  $(RequireConsentSwitch) -o "$(PackagesDir)"</RestoreCommand>
     <BuildCommand>$(NuGetCommand) pack "$(ProjectPath)" -o "$(PackageOutputDir)" -Version $(BuildVersion) -Symbols -NonInteractive</BuildCommand>
   </PropertyGroup>
 </Project>
