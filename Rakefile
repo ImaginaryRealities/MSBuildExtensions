@@ -30,8 +30,36 @@
 require 'rake/clean'
 
 CLOBBER.include('./_site')
+CLOBBER.include('./css')
+
+THEME_FILES = FileList.new('./src/themes/normal.less')
+CSS_FILES = THEME_FILES.pathmap('%{^./src/themes,./css}X.css')
+
+THEME_IMAGE_FILES = FileList.new('./lib/twitter-bootstrap/img/glyphicons-halflings.png')
+THEME_IMAGE_FILES.include('./lib/twitter-bootstrap/img/glyphicons-halflings-white.png')
+CSS_IMAGE_FILES = THEME_IMAGE_FILES.pathmap('./css/images/%f')
 
 desc 'Builds the GitHub Pages website.'
-task :default do
+task :default => [:build_css] do
 	sh "jekyll --pygments --no-lsi --safe"
+end
+
+task :build_css => ['./css/images'] + CSS_FILES + CSS_IMAGE_FILES
+
+directory './css'
+
+directory './css/images'
+
+THEME_FILES.each do |src|
+	dest = src.pathmap('%{^./src/themes,./css}X.css')
+	file dest => ['./css', src] do
+		sh "lessc -yui-compress #{src} #{dest}"
+	end
+end
+
+THEME_IMAGE_FILES.each do |src|
+	dest = src.pathmap('./css/images/%f')
+	file dest => ['./css/images', src] do
+		cp src, dest
+	end
 end

@@ -3,4 +3,6 @@ pygments: true
 lsi: false
 permalink: /blog/:categories/:year/:month/:day/:title.html
 paginate: 20
-exclude: [README.md, Rakefile]
+exclude: [README.md, Rakefile, lib, src]
+
+theme: normal
