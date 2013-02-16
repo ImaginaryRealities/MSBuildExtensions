@@ -29,8 +29,11 @@
 
 require 'rake/clean'
 
+CLEAN.include('./_temp')
+
 CLOBBER.include('./_site')
 CLOBBER.include('./css')
+CLOBBER.include('./javascript')
 
 THEME_FILES = FileList.new('./src/themes/normal.less')
 CSS_FILES = THEME_FILES.pathmap('%{^./src/themes,./css}X.css')
@@ -39,16 +42,40 @@ THEME_IMAGE_FILES = FileList.new('./lib/twitter-bootstrap/img/glyphicons-halflin
 THEME_IMAGE_FILES.include('./lib/twitter-bootstrap/img/glyphicons-halflings-white.png')
 CSS_IMAGE_FILES = THEME_IMAGE_FILES.pathmap('./css/images/%f')
 
+JAVASCRIPT_SOURCE_FILES = FileList.new('./lib/requirejs/require.js')
+JAVASCRIPT_SOURCE_FILES.include('./lib/jquery/jquery.js')
+JAVASCRIPT_SOURCE_FILES.include('./lib/twitter-bootstrap/js/bootstrap-transition.js')
+JAVASCRIPT_SOURCE_FILES.include('./lib/twitter-bootstrap/js/bootstrap-modal.js')
+JAVASCRIPT_SOURCE_FILES.include('./lib/twitter-bootstrap/js/bootstrap-dropdown.js')
+JAVASCRIPT_SOURCE_FILES.include('./lib/twitter-bootstrap/js/bootstrap-scrollspy.js')
+JAVASCRIPT_SOURCE_FILES.include('./lib/twitter-bootstrap/js/bootstrap-tab.js')
+JAVASCRIPT_SOURCE_FILES.include('./lib/twitter-bootstrap/js/bootstrap-tooltip.js')
+JAVASCRIPT_SOURCE_FILES.include('./lib/twitter-bootstrap/js/bootstrap-popover.js')
+JAVASCRIPT_SOURCE_FILES.include('./lib/twitter-bootstrap/js/bootstrap-alert.js')
+JAVASCRIPT_SOURCE_FILES.include('./lib/twitter-bootstrap/js/bootstrap-button.js')
+JAVASCRIPT_SOURCE_FILES.include('./lib/twitter-bootstrap/js/bootstrap-collapse.js')
+JAVASCRIPT_SOURCE_FILES.include('./lib/twitter-bootstrap/js/bootstrap-carousel.js')
+JAVASCRIPT_SOURCE_FILES.include('./lib/twitter-bootstrap/js/bootstrap-typeahead.js')
+JAVASCRIPT_SOURCE_FILES.include('./lib/twitter-bootstrap/js/bootstrap-affix.js')
+JAVASCRIPT_SOURCE_FILES.include('./src/javascript/**/*.js')
+JAVASCRIPT_SOURCE_FILES.include('./src/javascript/**/*.coffee')
+
 desc 'Builds the GitHub Pages website.'
-task :default => [:build_css] do
+task :default => [:build_css, :compile_javascript] do
 	sh "jekyll --pygments --no-lsi --safe"
 end
 
 task :build_css => ['./css/images'] + CSS_FILES + CSS_IMAGE_FILES
 
+task :compile_javascript => ['./javascript'] + JAVASCRIPT_SOURCE_FILES do
+	sh "r.js.cmd -o src/javascript/build.js"
+end
+
 directory './css'
 
 directory './css/images'
+
+directory './javascript'
 
 THEME_FILES.each do |src|
 	dest = src.pathmap('%{^./src/themes,./css}X.css')

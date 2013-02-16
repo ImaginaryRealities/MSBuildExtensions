@@ -2,6 +2,14 @@ MSBuild Extensions
 ==================
 The **gh-pages** branch contains the source code for the GitHub Pages website for the MSBuild Extensions project. The GitHub Pages website contains the documentation and announcements for this project.
 
+Getting the Source Code
+-----------------------
+In order to download and view the source code for this website locally, you can clone the repository using [Git](http://git-scm.org). To create a clone of this repository, run the following command in a command prompt or terminal window:
+
+    > git clone -b gh-pages --recursive git://github.com/ImaginaryRealities/MSBuildExtensions.git
+
+This command will clone the repository, check out the **gh-pages** branch, and then initialize and load all of the submodules of this project.
+
 Building the GitHub Pages Web Site
 ----------------------------------
 
@@ -13,11 +21,17 @@ In order to build the GitHub Pages Web Site, you will need to install the follow
 * [Ruby DevKit](http://www.rubyinstaller.org)
 * [Python 2.7.3](http://www.python.org)
 * [Pygments](http://pygments.org)
+* [Node.js 0.8.x](http://nodejs.org)
 
 After installing the prerequisites, you will need to install [Jekyll](https://github.com/mojombo/jekyll) and its dependencies using the Ruby **gem** tool:
 
     > gem install jekyll
 
+In addition to the ruby gems, you will also need to use [NPM](http://npmjs.org) to install the following modules globally:
+
+* **[less](http://www.lesscss.org)**
+* **[coffee-script](http://coffeescript.org)**
+* **[requirejs](http://requirejs.org)
 After installing everything, make sure that you add `C:\Python27` and `C:\Python27\Scripts` to your **PATH** environment variable.
 
 ### Building the Website
