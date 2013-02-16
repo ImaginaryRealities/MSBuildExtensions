@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HelpKI>
+
+  <HelpKINode Title="AssemblyConfiguration property" Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_AssemblyConfiguration.htm" />
+  <HelpKINode Title="AssemblyFileVersion property" Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_AssemblyFileVersion.htm" />
+  <HelpKINode Title="AssemblyInformationalVersion property" Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_AssemblyInformationalVersion.htm" />
+  <HelpKINode Title="AssemblyVersion property" Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_AssemblyVersion.htm" />
+  <HelpKINode Title="BuildNumber property" Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_BuildNumber.htm" />
+  <HelpKINode Title="BuildVersion property" Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_BuildVersion.htm" />
+  <HelpKINode Title="Execute method" Url="html/M_ImaginaryRealities_MSBuild_GenerateVersionInfo_Execute.htm" />
+  <HelpKINode Title="Execute method" Url="html/M_ImaginaryRealities_MSBuild_ParseVersionNumber_Execute.htm" />
+  <HelpKINode Title="GenerateVersionInfo class" Url="html/AllMembers_T_ImaginaryRealities_MSBuild_GenerateVersionInfo.htm" />
+  <HelpKINode Title="GenerateVersionInfo class" Url="html/T_ImaginaryRealities_MSBuild_GenerateVersionInfo.htm" />
+  <HelpKINode Title="GenerateVersionInfo class">
+    <HelpKINode Title="about GenerateVersionInfo class" Url="html/T_ImaginaryRealities_MSBuild_GenerateVersionInfo.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers_T_ImaginaryRealities_MSBuild_GenerateVersionInfo.htm" />
+    <HelpKINode Title="constructor" Url="html/M_ImaginaryRealities_MSBuild_GenerateVersionInfo__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_ImaginaryRealities_MSBuild_GenerateVersionInfo.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_ImaginaryRealities_MSBuild_GenerateVersionInfo.htm" />
+  </HelpKINode>
+  <HelpKINode Title="GenerateVersionInfo.AssemblyConfiguration property" Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_AssemblyConfiguration.htm" />
+  <HelpKINode Title="GenerateVersionInfo.AssemblyFileVersion property" Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_AssemblyFileVersion.htm" />
+  <HelpKINode Title="GenerateVersionInfo.AssemblyInformationalVersion property" Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_AssemblyInformationalVersion.htm" />
+  <HelpKINode Title="GenerateVersionInfo.AssemblyVersion property" Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_AssemblyVersion.htm" />
+  <HelpKINode Title="GenerateVersionInfo.Execute method" Url="html/M_ImaginaryRealities_MSBuild_GenerateVersionInfo_Execute.htm" />
+  <HelpKINode Title="GenerateVersionInfo.GenerateVersionInfo constructor" Url="html/M_ImaginaryRealities_MSBuild_GenerateVersionInfo__ctor.htm" />
+  <HelpKINode Title="GenerateVersionInfo.OutputPath property" Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_OutputPath.htm" />
+  <HelpKINode Title="GenerateVersionInfo.SemanticVersion property" Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_SemanticVersion.htm" />
+  <HelpKINode Title="ImaginaryRealities.MSBuild namespace" Url="html/N_ImaginaryRealities_MSBuild.htm" />
+  <HelpKINode Title="ImaginaryRealities.MSBuild.GenerateVersionInfo class" Url="html/AllMembers_T_ImaginaryRealities_MSBuild_GenerateVersionInfo.htm" />
+  <HelpKINode Title="ImaginaryRealities.MSBuild.GenerateVersionInfo class" Url="html/T_ImaginaryRealities_MSBuild_GenerateVersionInfo.htm" />
+  <HelpKINode Title="ImaginaryRealities.MSBuild.ParseVersionNumber class" Url="html/AllMembers_T_ImaginaryRealities_MSBuild_ParseVersionNumber.htm" />
+  <HelpKINode Title="ImaginaryRealities.MSBuild.ParseVersionNumber class" Url="html/T_ImaginaryRealities_MSBuild_ParseVersionNumber.htm" />
+  <HelpKINode Title="MajorVersion property" Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_MajorVersion.htm" />
+  <HelpKINode Title="MinorVersion property" Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_MinorVersion.htm" />
+  <HelpKINode Title="OutputPath property" Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_OutputPath.htm" />
+  <HelpKINode Title="ParseVersionNumber class" Url="html/AllMembers_T_ImaginaryRealities_MSBuild_ParseVersionNumber.htm" />
+  <HelpKINode Title="ParseVersionNumber class" Url="html/T_ImaginaryRealities_MSBuild_ParseVersionNumber.htm" />
+  <HelpKINode Title="ParseVersionNumber class">
+    <HelpKINode Title="about ParseVersionNumber class" Url="html/T_ImaginaryRealities_MSBuild_ParseVersionNumber.htm" />
+    <HelpKINode Title="all members" Url="html/AllMembers_T_ImaginaryRealities_MSBuild_ParseVersionNumber.htm" />
+    <HelpKINode Title="constructor" Url="html/M_ImaginaryRealities_MSBuild_ParseVersionNumber__ctor.htm" />
+    <HelpKINode Title="methods" Url="html/Methods_T_ImaginaryRealities_MSBuild_ParseVersionNumber.htm" />
+    <HelpKINode Title="properties" Url="html/Properties_T_ImaginaryRealities_MSBuild_ParseVersionNumber.htm" />
+  </HelpKINode>
+  <HelpKINode Title="ParseVersionNumber.BuildNumber property" Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_BuildNumber.htm" />
+  <HelpKINode Title="ParseVersionNumber.BuildVersion property" Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_BuildVersion.htm" />
+  <HelpKINode Title="ParseVersionNumber.Execute method" Url="html/M_ImaginaryRealities_MSBuild_ParseVersionNumber_Execute.htm" />
+  <HelpKINode Title="ParseVersionNumber.MajorVersion property" Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_MajorVersion.htm" />
+  <HelpKINode Title="ParseVersionNumber.MinorVersion property" Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_MinorVersion.htm" />
+  <HelpKINode Title="ParseVersionNumber.ParseVersionNumber constructor" Url="html/M_ImaginaryRealities_MSBuild_ParseVersionNumber__ctor.htm" />
+  <HelpKINode Title="ParseVersionNumber.PatchVersion property" Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_PatchVersion.htm" />
+  <HelpKINode Title="ParseVersionNumber.PrereleaseVersion property" Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_PrereleaseVersion.htm" />
+  <HelpKINode Title="ParseVersionNumber.VersionNumber property" Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_VersionNumber.htm" />
+  <HelpKINode Title="PatchVersion property" Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_PatchVersion.htm" />
+  <HelpKINode Title="PrereleaseVersion property" Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_PrereleaseVersion.htm" />
+  <HelpKINode Title="SemanticVersion property" Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_SemanticVersion.htm" />
+  <HelpKINode Title="VersionNumber property" Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_VersionNumber.htm" />
+</HelpKI>

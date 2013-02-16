@@ -33,6 +33,7 @@ CLEAN.include('./_temp')
 
 CLOBBER.include('./_site')
 CLOBBER.include('./css')
+CLOBBER.include('./help')
 CLOBBER.include('./javascript')
 
 THEME_FILES = FileList.new('./src/themes/normal.less')
@@ -60,8 +61,11 @@ JAVASCRIPT_SOURCE_FILES.include('./lib/twitter-bootstrap/js/bootstrap-affix.js')
 JAVASCRIPT_SOURCE_FILES.include('./src/javascript/**/*.js')
 JAVASCRIPT_SOURCE_FILES.include('./src/javascript/**/*.coffee')
 
+HELP_FILES = FileList.new('../MSBuildExtensions/src/Help/Help/**/*.*')
+WEBSITE_HELP_FILES = HELP_FILES.pathmap('%{^../MSBuildExtensions/src/Help/Help,./help}p')
+
 desc 'Builds the GitHub Pages website.'
-task :default => [:build_css, :compile_javascript] do
+task :default => [:build_css, :compile_javascript, :copy_api_help] do
 	sh "jekyll --pygments --no-lsi --safe"
 end
 
@@ -71,9 +75,21 @@ task :compile_javascript => ['./javascript'] + JAVASCRIPT_SOURCE_FILES do
 	sh "r.js.cmd -o src/javascript/build.js"
 end
 
+task :copy_api_help => ['./help/fti', './help/html', './help/icons', './help/scripts', './help/styles'] + WEBSITE_HELP_FILES
+
 directory './css'
 
 directory './css/images'
+
+directory './help/fti'
+
+directory './help/html'
+
+directory './help/icons'
+
+directory './help/scripts'
+
+directory './help/styles'
 
 directory './javascript'
 
@@ -89,4 +105,8 @@ THEME_IMAGE_FILES.each do |src|
 	file dest => ['./css/images', src] do
 		cp src, dest
 	end
+end
+
+rule(/^\.\/help\// => [proc {|t| t.pathmap('%{^./help,../MSBuildExtensions/src/Help/Help}p')}]) do |t|
+	cp t.source, t.name
 end
