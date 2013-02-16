@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSBuildExtensions", "MSBuil
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSBuildExtensionsUnitTests", "MSBuildExtensionsUnitTests\MSBuildExtensionsUnitTests.csproj", "{EECDA735-3BEC-4855-A999-AB8044D20422}"
 EndProject
+Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Help", "Help\Help.shfbproj", "{8C20AB3A-155F-4B9F-BF17-CE27BA13F816}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{EECDA735-3BEC-4855-A999-AB8044D20422}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EECDA735-3BEC-4855-A999-AB8044D20422}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EECDA735-3BEC-4855-A999-AB8044D20422}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8C20AB3A-155F-4B9F-BF17-CE27BA13F816}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8C20AB3A-155F-4B9F-BF17-CE27BA13F816}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8C20AB3A-155F-4B9F-BF17-CE27BA13F816}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8C20AB3A-155F-4B9F-BF17-CE27BA13F816}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

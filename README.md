@@ -4,6 +4,20 @@ This project implements custom MSBuild tasks and other extensions that are used 
 
 Building the MSBuild Extensions
 -------------------------------
+
+### Prerequisites
+
+In order to build the MSBuild Extensions source code, you will need the following software installed on your development computer:
+
+* **[Microsoft Visual Studio 2012](http://www.microsoft.com/visualstudio/eng/downloads)**
+* **[Sandcastle Help File Builder](http://shfb.codeplex.com)** (with Visual Studio package installed)
+
+The MSBuild Extensions are compatible with both .NET 4.0 and 4.5, but Visual Studio 2012 is the current supported development environment for the project.
+
+The [Sandcastle Help File Builder](http://shfb.codeplex.com) package is used to generate the HTML pages for the API documentation for the project. This documentation is hosted on the [GitHub Pages website](http://ImaginaryRealities.github.com/MSBuildExtensions) for the project.
+
+### Building the MSBuild Extensions
+
 The MSBuild Extensions project uses an automated build system controlled by Microsoft's MSBuild build tool that is distributed with the .NET Framework. The MSBuild Extensions project is compatible with both the .NET 4.0 and 4.5 frameworks.
 
 The MSBuild Extensions project utilizes NuGet's package restore feature to automatically download dependencies that are deployed using NuGet. Dependencies that are not available through NuGet are included in the Git repository for the project.
