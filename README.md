@@ -31,7 +31,14 @@ In addition to the ruby gems, you will also need to use [NPM](http://npmjs.org) 
 
 * **[less](http://www.lesscss.org)**
 * **[coffee-script](http://coffeescript.org)**
-* **[requirejs](http://requirejs.org)
+* **[requirejs](http://requirejs.org)**
+
+These modules can be installed by running the following command on the command line:
+
+	> npm install -g <module-name>
+
+where *module-name* is the name of one of the prerequisite packages listed above.
+
 After installing everything, make sure that you add `C:\Python27` and `C:\Python27\Scripts` to your **PATH** environment variable.
 
 ### Building the Website
