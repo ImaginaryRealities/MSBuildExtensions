@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	{% if page.title %}
+	{% capture page_title %}{{page.title}} - {{site.brand}}{% endcapture %}
+	{% else %}
+	{% capture page_title %}{{site.brand}}{% endcapture %}
+	{% endif %}
+	<title>{{page_title}}</title>
+	<link rel="stylesheet" href="{{site.url}}/css/{{site.theme}}.css"/>
+</head>
+<body>
+	{% assign prefix = page.url | remove_first:'/' | split:'/' | first %}
+	{% case prefix %}
+	{% when 'index.html' %}
+	{% assign homeClass = 'active' %}
+	{% when 'license.html' %}
+	{% assign licenseClass = 'active' %}
+	{% endcase %}
+	<nav class="navbar navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</a>
+				<a class="brand" href="{{site.url}}/">{{site.brand}}</a>
+				<div class="nav-collapse collapse">
+					<ul class="nav">
+						<li class="{{homeClass}}"><a href="{{site.url}}/">Home</a></li>
+						<li class="{{licenseClass}}"><a href="{{site.url}}/license.html">License</a></li>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+								Support
+								<b class="caret"></b>
+							</a>
+							<ul class="dropdown-menu">
+								<li><a href="{{site.url}}/help/index.html" target="_blank">API Documentation</a></li>
+								<li><a href="http://www.imaginaryrealities.com/forum">Forum</a></li>
+								<li><a href="https://github.com/ImaginaryRealities/MSBuildExtensions/issues">Report a Bug</a></li>
+							</ul>
+						</li>
+					</ul>
+					<ul class="nav pull-right">
+						<li><a href="https://github.com/ImaginaryRealities/MSBuildExtensions">GitHub</a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</nav>
+	<div class="container">
+		{{content}}
+	</div>
+	{% if page.javascript %}
+	<script src="{{site.url}}/javascript/website.js" data-main="javascript/{{page.javascript}}.js"></script>
+	{% else %}
+	<script src="{{site.url}}/javascript/website.js"></script>
+	{% endif %}
+</body>
+</html>

@@ -6,3 +6,4 @@ paginate: 20
 exclude: [README.md, Rakefile, lib, src, javascript/build.js, javascript/build.txt]
 
 theme: normal
+brand: MSBuild Extensions

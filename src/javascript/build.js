@@ -69,7 +69,7 @@
 	modules: [
 		{
 			name: 'website',
-			include: ['requirejs', 'jquery', 'bootstrap-dropdown']
+			include: ['requirejs', 'jquery', 'bootstrap-collapse', 'bootstrap-dropdown']
 		},
 		{
 			name: 'homepage',
