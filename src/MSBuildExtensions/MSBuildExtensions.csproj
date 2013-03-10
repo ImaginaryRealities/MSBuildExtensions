@@ -135,6 +135,9 @@
     <None Include="..\ImaginaryRealities.snk">
       <Link>ImaginaryRealities.snk</Link>
     </None>
+    <None Include="MSBuildExtensions.targets">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
