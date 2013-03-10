@@ -20,6 +20,7 @@
     <file src="MSBuildExtensions\bin\Release\ImaginaryRealities.MSBuild.dll" target="tools"/>
     <file src="MSBuildExtensions\bin\Release\ImaginaryRealities.MSBuild.pdb" target="tools"/>
     <file src="MSBuildExtensions\bin\Release\ImaginaryRealities.MSBuild.xml" target="tools"/>
+    <file src="MSBuildExtensions\MSBuildExtensions.targets" target="tools"/>
     <file src="MSBuildExtensions\*.cs" target="src"/>
   </files>
 </package>
