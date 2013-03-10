@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shfbBuild product="Sandcastle Help File Builder" version="1.9.6.0" projectFile="Z:\Documents\Projects\MSBuildExtensions\src\Help\Help.shfbproj" started="2/15/2013 6:16:37 PM">
+<shfbBuild product="Sandcastle Help File Builder" version="1.9.6.0" projectFile="Z:\Documents\Projects\MSBuildExtensions\src\Help\Help.shfbproj" started="3/10/2013 9:36:03 AM">
 <buildStep step="Initializing">
 Finding tools...
 Found Sandcastle tools in &#39;C:\Program Files (x86)\Sandcastle\&#39;
@@ -10,17 +10,17 @@ Source: Z:\Documents\Projects\MSBuildExtensions\src\MSBuildExtensions\MSBuildExt
     Found project &#39;Z:\Documents\Projects\MSBuildExtensions\src\MSBuildExtensions\MSBuildExtensions.csproj&#39;
 
 Parsing project files
-    Found assembly &#39;Z:\Documents\Projects\MSBuildExtensions\src\MSBuildExtensions\bin\Debug\ImaginaryRealities.MSBuild.dll&#39;
+    Found assembly &#39;Z:\Documents\Projects\MSBuildExtensions\src\MSBuildExtensions\bin\Release\ImaginaryRealities.MSBuild.dll&#39;
 
 References to include (excluding framework assemblies):
     None
 
 Copying XML comments files
-    Z:\Documents\Projects\MSBuildExtensions\src\MSBuildExtensions\bin\Debug\ImaginaryRealities.MSBuild.XML -&gt; Z:\Documents\Projects\MSBuildExtensions\src\Help\Help\Working\ImaginaryRealities.MSBuild.XML
+    Z:\Documents\Projects\MSBuildExtensions\src\MSBuildExtensions\bin\Release\ImaginaryRealities.MSBuild.XML -&gt; Z:\Documents\Projects\MSBuildExtensions\src\Help\Help\Working\ImaginaryRealities.MSBuild.XML
 </buildStep>
 <buildStep step="GenerateSharedContent">
 Generating shared content files (en-US, English (United States))...
-    Last step completed in 00:00:00.0313
+    Last step completed in 00:00:00.0000
 </buildStep>
 <buildStep step="GenerateApiFilter">
 Generating API filter for MRefBuilder...
@@ -36,7 +36,7 @@ Generating reflection information...
   XslTransform (v2.7.2.0)
   Copyright c 2006-2012, Microsoft Corporation, All Rights Reserved
   Info: Applying XSL transformation &#39;C:\Program Files (x86)\Sandcastle\ProductionTransforms\MergeDuplicates.xsl&#39;.
-    Last step completed in 00:00:01.0937
+    Last step completed in 00:00:00.8437
 </buildStep>
 <buildStep step="GenerateNamespaceSummaries">
 Generating namespace summary information...
@@ -44,7 +44,7 @@ Generating namespace summary information...
 </buildStep>
 <buildStep step="ApplyVisibilityProperties">
 Applying visibility properties to reflection information file
-    Last step completed in 00:00:00.4063
+    Last step completed in 00:00:00.0157
 </buildStep>
 <buildStep step="TransformReflectionInfo">
 Transforming reflection output...
@@ -56,11 +56,11 @@ Transforming reflection output...
   XslTransform (v2.7.2.0)
   Copyright c 2006-2012, Microsoft Corporation, All Rights Reserved
   Info: Applying XSL transformation &#39;C:\Program Files (x86)\Sandcastle\ProductionTransforms\ReflectionToManifest.xsl&#39;.
-    Last step completed in 00:00:00.6875
+    Last step completed in 00:00:00.5781
 </buildStep>
 <buildStep step="ModifyHelpTopicFilenames">
 Modifying help topic filenames in reflection information file
-    Last step completed in 00:00:00.0156
+    Last step completed in 00:00:00.0157
 </buildStep>
 <buildStep step="CopyStandardContent">
 Copying standard help content...
@@ -258,7 +258,7 @@ C:\Program Files (x86)\Sandcastle\\Presentation\VS2010\branding -&gt; Z:\Documen
     C:\Program Files (x86)\Sandcastle\Presentation\VS2010\branding\ps-instrumentedLink.xslt -> Z:\Documents\Projects\MSBuildExtensions\src\Help\Help\Working\branding\ps-instrumentedLink.xslt
     C:\Program Files (x86)\Sandcastle\Presentation\VS2010\branding\ps-languageSpecificText.xslt -> Z:\Documents\Projects\MSBuildExtensions\src\Help\Help\Working\branding\ps-languageSpecificText.xslt
     C:\Program Files (x86)\Sandcastle\Presentation\VS2010\branding\ps-codesnippet.xslt -> Z:\Documents\Projects\MSBuildExtensions\src\Help\Help\Working\branding\ps-codesnippet.xslt
-    Last step completed in 00:00:00.4062
+    Last step completed in 00:00:00.2812
 </buildStep>
 <buildStep step="CopyAdditionalContent">
 Copying additional content files...
@@ -276,7 +276,7 @@ Generating intermediate table of contents file...
   Copyright c 2006-2012, Microsoft Corporation, All Rights Reserved
   Info: Applying XSL transformation &#39;C:\Program Files (x86)\Sandcastle\\ProductionTransforms\CreateVSToc.xsl&#39;.
 Generating conceptual content intermediate TOC file...
-    Last step completed in 00:00:00.2500
+    Last step completed in 00:00:00.2031
 </buildStep>
 <buildStep step="CreateBuildAssemblerConfigs">
 Creating Sandcastle configuration files...
@@ -287,7 +287,7 @@ Creating Sandcastle configuration files...
 Merging custom build component configurations
 Z:\Documents\Projects\MSBuildExtensions\src\Help\Help\Working\sandcastle.config
     Replacing default configuration for &#39;Code Block Component&#39; with the custom configuration
-    Last step completed in 00:00:00.3594
+    Last step completed in 00:00:00.0157
 </buildStep>
 <buildStep step="BuildReferenceTopics">
 Building reference help topics...
@@ -296,32 +296,14 @@ Building reference help topics...
   Copyright c 2006-2012, Microsoft Corporation, All Rights Reserved
   Info: Loading configuration...
   Info: Processing topics...
-  Warn: ShowMissingComponent: [N:ImaginaryRealities.MSBuild] Missing &lt;summary&gt; documentation
-  Warn: ShowMissingComponent: [T:ImaginaryRealities.MSBuild.GenerateVersionInfo] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [M:ImaginaryRealities.MSBuild.GenerateVersionInfo.#ctor] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [P:ImaginaryRealities.MSBuild.GenerateVersionInfo.AssemblyConfiguration] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [P:ImaginaryRealities.MSBuild.GenerateVersionInfo.AssemblyFileVersion] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [P:ImaginaryRealities.MSBuild.GenerateVersionInfo.AssemblyInformationalVersion] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [P:ImaginaryRealities.MSBuild.GenerateVersionInfo.AssemblyVersion] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [M:ImaginaryRealities.MSBuild.GenerateVersionInfo.Execute] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [P:ImaginaryRealities.MSBuild.GenerateVersionInfo.OutputPath] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [P:ImaginaryRealities.MSBuild.GenerateVersionInfo.SemanticVersion] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [M:ImaginaryRealities.MSBuild.ParseVersionNumber.#ctor] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [P:ImaginaryRealities.MSBuild.ParseVersionNumber.BuildVersion] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [M:ImaginaryRealities.MSBuild.ParseVersionNumber.Execute] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [P:ImaginaryRealities.MSBuild.ParseVersionNumber.MajorVersion] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [P:ImaginaryRealities.MSBuild.ParseVersionNumber.MinorVersion] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [P:ImaginaryRealities.MSBuild.ParseVersionNumber.PatchVersion] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [P:ImaginaryRealities.MSBuild.ParseVersionNumber.PrereleaseVersion] Missing &lt;remarks&gt; documentation
-  Warn: ShowMissingComponent: [P:ImaginaryRealities.MSBuild.ParseVersionNumber.VersionNumber] Missing &lt;remarks&gt; documentation
   Info: Processed 27 topics
-    Last step completed in 00:00:39.9997
+    Last step completed in 00:01:36.5150
 </buildStep>
 <buildStep step="CombiningIntermediateTocFiles">
 Combining conceptual and API intermediate TOC files...
 
 Clearing any prior web output
-    Last step completed in 00:00:00.0000
+    Last step completed in 00:00:00.3438
 </buildStep>
 <buildStep step="ExtractingHtmlInfo">
 Extracting HTML info for HTML Help 1 and/or website...
@@ -337,31 +319,31 @@ Processed 27 HTML files
 Sorting keywords and generating See Also indices
 Saving website keyword index to Z:\Documents\Projects\MSBuildExtensions\src\Help\Help\Working\WebKI.xml
 Saving website table of contents to Z:\Documents\Projects\MSBuildExtensions\src\Help\Help\Working\WebTOC.xml
-    Last step completed in 00:00:00.2031
+    Last step completed in 00:00:00.1719
 </buildStep>
 <buildStep step="GenerateHelpFormatTableOfContents">
 Generating website table of contents file...
-    Last step completed in 00:00:00.0156
+    Last step completed in 00:00:00.0000
 </buildStep>
 <buildStep step="GenerateFullTextIndex">
 Generating full-text index for the website...
 
-    Last step completed in 00:00:00.0312
+    Last step completed in 00:00:00.0000
 </buildStep>
 <buildStep step="CopyingWebsiteFiles">
 Copying website files to output folder...
 
 Copied 100 files
-Copied 100 files for the website content
-    Last step completed in 00:00:00.3281
+Copied 102 files for the website content
+    Last step completed in 00:00:00.2813
 </buildStep>
 <buildStep step="CleanIntermediates">
 Removing intermediate files...
-    Last step completed in 00:00:00.7188
+    Last step completed in 00:00:00.7031
 </buildStep>
 <buildStep step="Completed">
 
-Build completed successfully at 02/15/2013 06:17 PM.  Total time: 00:00:45.1559
+Build completed successfully at 03/10/2013 09:37 AM.  Total time: 00:01:40.0462
 
 </buildStep>
 </shfbBuild>

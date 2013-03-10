@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <HelpTOC>
 
-  <HelpTOCNode Id="24d2063b-743b-437a-872e-2a69cd3e7290" Title="Namespaces" Url="html/R_Project_MSBuildExtensions.htm">
-    <HelpTOCNode Id="1126e91b-f6da-4e85-9a18-6dfc147649a1" Title="ImaginaryRealities.MSBuild Namespace" Url="html/N_ImaginaryRealities_MSBuild.htm">
-      <HelpTOCNode Id="1100b460-492c-4593-9698-ffd0c2242e9a" Title="GenerateVersionInfo Class" Url="html/T_ImaginaryRealities_MSBuild_GenerateVersionInfo.htm">
+  <HelpTOCNode Id="423b8f04-c67f-4d36-a117-ddd59455b23f" Title="Namespaces" Url="html/R_Project_MSBuildExtensions.htm">
+    <HelpTOCNode Id="4ef36aad-1dfd-451d-9467-aba85a303d12" Title="ImaginaryRealities.MSBuild Namespace" Url="html/N_ImaginaryRealities_MSBuild.htm">
+      <HelpTOCNode Id="4f58f176-3170-47ec-b24e-630fbd2c8b11" Title="GenerateVersionInfo Class" Url="html/T_ImaginaryRealities_MSBuild_GenerateVersionInfo.htm">
         <HelpTOCNode Title="GenerateVersionInfo Members" Url="html/AllMembers_T_ImaginaryRealities_MSBuild_GenerateVersionInfo.htm" />
         <HelpTOCNode Title="GenerateVersionInfo Constructor " Url="html/M_ImaginaryRealities_MSBuild_GenerateVersionInfo__ctor.htm" />
-        <HelpTOCNode Id="e408f681-8e6d-461e-bba7-a835c580f10c" Title="GenerateVersionInfo Methods" Url="html/Methods_T_ImaginaryRealities_MSBuild_GenerateVersionInfo.htm">
+        <HelpTOCNode Id="17358c56-c80c-4749-8596-928a37f0805c" Title="GenerateVersionInfo Methods" Url="html/Methods_T_ImaginaryRealities_MSBuild_GenerateVersionInfo.htm">
           <HelpTOCNode Title="Execute Method " Url="html/M_ImaginaryRealities_MSBuild_GenerateVersionInfo_Execute.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="f012b64b-0946-459b-86e2-e5f9311d06c5" Title="GenerateVersionInfo Properties" Url="html/Properties_T_ImaginaryRealities_MSBuild_GenerateVersionInfo.htm">
+        <HelpTOCNode Id="f0370512-8cee-4afc-82cb-5df867372cb0" Title="GenerateVersionInfo Properties" Url="html/Properties_T_ImaginaryRealities_MSBuild_GenerateVersionInfo.htm">
           <HelpTOCNode Title="AssemblyConfiguration Property " Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_AssemblyConfiguration.htm" />
           <HelpTOCNode Title="AssemblyFileVersion Property " Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_AssemblyFileVersion.htm" />
           <HelpTOCNode Title="AssemblyInformationalVersion Property " Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_AssemblyInformationalVersion.htm" />
@@ -18,13 +18,13 @@
           <HelpTOCNode Title="SemanticVersion Property " Url="html/P_ImaginaryRealities_MSBuild_GenerateVersionInfo_SemanticVersion.htm" />
         </HelpTOCNode>
       </HelpTOCNode>
-      <HelpTOCNode Id="355bfcbd-0ad3-402b-899e-3302303e9134" Title="ParseVersionNumber Class" Url="html/T_ImaginaryRealities_MSBuild_ParseVersionNumber.htm">
+      <HelpTOCNode Id="017749ba-77e9-4ad6-b7c8-747904fc07f8" Title="ParseVersionNumber Class" Url="html/T_ImaginaryRealities_MSBuild_ParseVersionNumber.htm">
         <HelpTOCNode Title="ParseVersionNumber Members" Url="html/AllMembers_T_ImaginaryRealities_MSBuild_ParseVersionNumber.htm" />
         <HelpTOCNode Title="ParseVersionNumber Constructor " Url="html/M_ImaginaryRealities_MSBuild_ParseVersionNumber__ctor.htm" />
-        <HelpTOCNode Id="2b4dd359-a2ea-41e2-aa43-db857ce63a1c" Title="ParseVersionNumber Methods" Url="html/Methods_T_ImaginaryRealities_MSBuild_ParseVersionNumber.htm">
+        <HelpTOCNode Id="f9885339-585c-4cda-b5b0-fda873a808aa" Title="ParseVersionNumber Methods" Url="html/Methods_T_ImaginaryRealities_MSBuild_ParseVersionNumber.htm">
           <HelpTOCNode Title="Execute Method " Url="html/M_ImaginaryRealities_MSBuild_ParseVersionNumber_Execute.htm" />
         </HelpTOCNode>
-        <HelpTOCNode Id="be0f28e0-97e9-4588-957c-4ab05a2a01fd" Title="ParseVersionNumber Properties" Url="html/Properties_T_ImaginaryRealities_MSBuild_ParseVersionNumber.htm">
+        <HelpTOCNode Id="4c939cb2-cb5c-43bf-9f83-835834514485" Title="ParseVersionNumber Properties" Url="html/Properties_T_ImaginaryRealities_MSBuild_ParseVersionNumber.htm">
           <HelpTOCNode Title="BuildNumber Property " Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_BuildNumber.htm" />
           <HelpTOCNode Title="BuildVersion Property " Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_BuildVersion.htm" />
           <HelpTOCNode Title="MajorVersion Property " Url="html/P_ImaginaryRealities_MSBuild_ParseVersionNumber_MajorVersion.htm" />
