@@ -43,6 +43,72 @@ namespace ImaginaryRealities.MSBuild
     /// MSBuild task that will generate a source code file containing the
     /// build-specific metadata for the project's assemblies.
     /// </summary>
+    /// <remarks>
+    /// <para>
+    /// If you look at the metadata in the typical <b>AssemblyInfo.cs</b> file,
+    /// you will usually find metadata attributes that are both static and
+    /// dynamic in nature. For example, the <b>AssemblyTitleAttribute</b>
+    /// attribute is likely to be static, as the title of the assembly will not
+    /// change frequently (if at all) during the lifetime of the project.
+    /// However, other attributes such as <b>AssemblyConfigurationAttribute</b>
+    /// and <b>AssemblyFileVersion</b> attribute will tend to change with each
+    /// product build. The <b>GenerateVersionInfo</b> task is a custom MSBuild
+    /// task that will help you to generate a source code file containing the
+    /// non-static attributes for the assembly.
+    /// </para>
+    /// <para>
+    /// The <b>GenerateVersionInfo</b> task will generate a metadata file
+    /// containing the following attributes:
+    /// </para>
+    /// <list type="bullet">
+    /// <item>
+    /// <description>
+    /// <see cref="AssemblyConfigurationAttribute"/>
+    /// </description>
+    /// </item>
+    /// <item>
+    /// <description>
+    /// <see cref="AssemblyFileVersionAttribute"/>
+    /// </description>
+    /// </item>
+    /// <item>
+    /// <description>
+    /// <see cref="AssemblyInformationalVersionAttribute"/>
+    /// </description>
+    /// </item>
+    /// <item>
+    /// <description>
+    /// <see cref="AssemblyVersionAttribute"/>
+    /// </description>
+    /// </item>
+    /// <item>
+    /// <description>
+    /// <b>SemanticVersionNumberAttribute</b> (Optional; only necessary if you
+    /// are using the ImaginaryRealities Common library)
+    /// </description>
+    /// </item>
+    /// </list>
+    /// <example>
+    /// In this example, we will use the <b>GenerateVersionInfo</b> task to
+    /// generate the dynamic metadata file for an assembly as part of an
+    /// automated build process. In order to use the task in an MSBuild script,
+    /// you will first need to import the task. Next, you call the task by
+    /// passing the path of the file that will be created and the values for
+    /// each of the attributes to be set.
+    /// <code>
+    /// &lt;UsingTask TaskName="ImaginaryRealities.MSBuild.GenerateVersionInfo"
+    ///            AssemblyFile="ImaginaryRealities.MSBuild.dll"/&gt;
+    /// &lt;Target Name="_GenerateVersionInfoFile"&gt;
+    ///   &lt;GenerateVersionInfo OutputPath="VersionInfo.cs"
+    ///                        AssemblyConfiguration="Release"
+    ///                        AssemblyFileVersion="1.1.2.3"
+    ///                        AssemblyInformationalVersion="1.1.2.3"
+    ///                        AssemblyVersion="1.0.0.0"
+    ///                        SemanticVersion="1.1.2+build.3"/&gt;
+    /// &lt;/Target&gt;
+    /// </code>
+    /// </example>
+    /// </remarks>
     public class GenerateVersionInfo : Task
     {
         /// <summary>

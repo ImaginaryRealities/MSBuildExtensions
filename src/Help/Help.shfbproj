@@ -56,7 +56,10 @@
       <DocumentationSource sourceFile="..\MSBuildExtensions\MSBuildExtensions.csproj" />
     </DocumentationSources>
     <HelpAttributes />
-    <NamespaceSummaries />
+    <NamespaceSummaries>
+      <NamespaceSummaryItem name="(global)" isDocumented="False" />
+      <NamespaceSummaryItem name="ImaginaryRealities.MSBuild" isDocumented="True">Custom MSBuild tasks and extensions used by ImaginaryRealities to build Windows software products.</NamespaceSummaryItem>
+    </NamespaceSummaries>
     <PlugInConfigurations />
     <BuildLogFile />
     <HtmlHelp1xCompilerPath />
@@ -84,7 +87,8 @@
     <CopyrightHref>http://www.imaginaryrealities.com</CopyrightHref>
     <ContentPlacement>AboveNamespaces</ContentPlacement>
     <VisibleItems>Attributes, ExplicitInterfaceImplementations, InheritedMembers, InheritedFrameworkMembers, Protected, SealedProtected</VisibleItems>
-    <MissingTags>Summary, Parameter, Returns, Value, Remarks, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+    <MissingTags>Summary, Parameter, Returns, Value, AutoDocumentCtors, Namespace, TypeParameter, IncludeTargets, AutoDocumentDispose</MissingTags>
+    <ProjectSummary>The ImaginaryRealities MSBuild Extensions project extends the Microsoft MSBuild build tool with custom tasks and extensions that are used by ImaginaryRealities to build our software products for the Microsoft Windows platforms.</ProjectSummary>
   </PropertyGroup>
   <!-- There are no properties for these groups.  AnyCPU needs to appear in
        order for Visual Studio to perform the build.  The others are optional
