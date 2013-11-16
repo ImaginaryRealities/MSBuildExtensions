@@ -39,7 +39,7 @@
     <BuildPackage>true</BuildPackage>
     <PackageOutputDir>$(OutputPath)\NuGet</PackageOutputDir>
     <ProjectPath>$(MSBuildProjectDirectory)\ImaginaryRealities.MSBuildExtensions.nuspec</ProjectPath>
-    <BuildVersion Condition="'$(BuildVersion)'==''">1.0.0</BuildVersion>
+    <BuildVersion Condition="'$(BuildVersion)'==''">2.0.0</BuildVersion>
   </PropertyGroup>
 
   <!--
@@ -113,59 +113,6 @@
         else
         {
           this.BuildVersion = null;
-        }
-        ]]>
-      </Code>
-    </Task>
-  </UsingTask>
-  
-  <!--
-  
-  The GenerateVersionInfo task will generate the VersionInfo.cs file with the
-  name of the build configuration and the correct version numbers for the
-  current product build. This task is identical to the GenerateVersionNumber
-  class in the MSBuildExtensions project, but is defined here to bootstrap the
-  process of building the project.
-  
-  -->
-  <UsingTask TaskName="GenerateVersionInfo"
-             TaskFactory="CodeTaskFactory"
-             AssemblyFile="$(MSBuildToolsPath)\Microsoft.Build.Tasks.v4.0.dll">
-    <ParameterGroup>
-      <OutputPath Required="true"/>
-      <AssemblyConfiguration Required="true"/>
-      <AssemblyFileVersion Required="true"/>
-      <AssemblyInformationalVersion Required="true"/>
-      <AssemblyVersion Required="true"/>
-    </ParameterGroup>
-    <Task>
-      <Using Namespace="System.CodeDom"/>
-      <Using Namespace="System.CodeDom.Compiler"/>
-      <Using Namespace="System.IO"/>
-      <Using Namespace="System.Reflection"/>
-      <Code Type="Fragment" Language="cs">
-        <![CDATA[
-        var codeCompileUnit = new CodeCompileUnit();
-        codeCompileUnit.AssemblyCustomAttributes.Add(
-          new CodeAttributeDeclaration(
-            new CodeTypeReference(typeof(AssemblyConfigurationAttribute)),
-            new CodeAttributeArgument(new CodePrimitiveExpression(this.AssemblyConfiguration))));
-        codeCompileUnit.AssemblyCustomAttributes.Add(
-          new CodeAttributeDeclaration(
-            new CodeTypeReference(typeof(AssemblyFileVersionAttribute)),
-            new CodeAttributeArgument(new CodePrimitiveExpression(this.AssemblyFileVersion))));
-        codeCompileUnit.AssemblyCustomAttributes.Add(
-          new CodeAttributeDeclaration(
-            new CodeTypeReference(typeof(AssemblyInformationalVersionAttribute)),
-            new CodeAttributeArgument(new CodePrimitiveExpression(this.AssemblyInformationalVersion))));
-        codeCompileUnit.AssemblyCustomAttributes.Add(
-          new CodeAttributeDeclaration(
-            new CodeTypeReference(typeof(AssemblyVersionAttribute)),
-            new CodeAttributeArgument(new CodePrimitiveExpression(this.AssemblyVersion))));
-        using (var provider = CodeDomProvider.CreateProvider("csharp"))
-        using (var writer = File.CreateText(this.OutputPath))
-        {
-          provider.GenerateCodeFromCompileUnit(codeCompileUnit, writer, new CodeGeneratorOptions());
         }
         ]]>
       </Code>
@@ -250,7 +197,7 @@
   <Target Name="_BuildAllConfigurations">
     <MSBuild Projects="$(MSBuildProjectFullPath)"
              Targets="_BuildConfiguration"
-             Properties="Configuration=%(BuildConfigurations.Identity);ProductVersion=$(ProductVersion);AssemblyVersion=$(AssemblyVersion)"/>
+             Properties="Configuration=%(BuildConfigurations.Identity);Platform=Any CPU;ProductVersion=$(ProductVersion);AssemblyVersion=$(AssemblyVersion)"/>
   </Target>
   
   <!--
@@ -260,15 +207,27 @@
   
   -->
   <UsingTask TaskName="Xunit.Runner.MSBuild.xunit"
-             AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runners.1.9.1\tools\xunit.runner.msbuild.dll"/>
+             AssemblyFile="$(MSBuildProjectDirectory)\packages\xunit.runners.1.9.2\tools\xunit.runner.msbuild.dll"/>
+  <ItemGroup>
+    <AssemblyAttributes Include="System.Reflection.AssemblyConfigurationAttribute">
+      <_Parameter1>$(Configuration)</_Parameter1>
+    </AssemblyAttributes>
+    <AssemblyAttributes Include="System.Reflection.AssemblyFileVersionAttribute">
+      <_Parameter1>$(ProductVersion)</_Parameter1>
+    </AssemblyAttributes>
+    <AssemblyAttributes Include="System.Reflection.AssemblyInformationalVersionAttribute">
+      <_Parameter1>$(ProductVersion)</_Parameter1>
+    </AssemblyAttributes>
+    <AssemblyAttributes Include="System.Reflection.AssemblyVersionAttribute">
+      <_Parameter1>$(AssemblyVersion)</_Parameter1>
+    </AssemblyAttributes>
+  </ItemGroup>
   <Target Name="_BuildConfiguration">
     <MakeDir Directories="$(OutputPath)\$(Configuration)"
              Condition="!Exists('$(OutputPath)\$(Configuration)')"/>
-    <GenerateVersionInfo OutputPath="$(OutputPath)\$(Configuration)\VersionInfo.cs"
-                         AssemblyConfiguration="$(Configuration)"
-                         AssemblyFileVersion="$(ProductVersion)"
-                         AssemblyInformationalVersion="$(ProductVersion)"
-                         AssemblyVersion="$(AssemblyVersion)"/>
+    <WriteCodeFragment OutputFile="$(OutputPath)\$(Configuration)\VersionInfo.cs"
+                       AssemblyAttributes="@(AssemblyAttributes)"
+                       Language="C#"/>
     <MSBuild Projects="$(SolutionPath)"
              Targets="Build"
              Properties="VersionInfoPath=$(OutputPath)\$(Configuration)\VersionInfo.cs"/>
