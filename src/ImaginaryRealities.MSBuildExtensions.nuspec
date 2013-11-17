@@ -7,7 +7,18 @@
     <authors>ImaginaryRealities, LLC</authors>
     <owners>ImaginaryRealities, LLC</owners>
     <description>The MSBuild extensions are a set of custom tasks and other MSBuild extensions that ImaginaryRealities uses to build our Windows and .NET software using the .NET MSBuild tool. The MSBuild Extensions are packaged as a solution-level NuGet package.</description>
-    <releaseNotes>Initial release of the MSBuild Extensions.</releaseNotes>
+    <releaseNotes>
+        I removed the strong name key that I used to sign the assembly
+        previously. After evaluating the pros/cons of strong naming,
+        I switched my mind and decided that it did not have any
+        significant value.
+
+        Although I left the task in, I deprecated the
+        GenerateVersionInfo MSBuild task. MSBuild has the standard
+        WriteCodeFragment task that was not in place when I originally
+        created the GenerateVersionInfo task. I recommend that you use
+        the built-in task instead.
+    </releaseNotes>
     <summary>Custom MSBuild tasks and other extensions.</summary>
     <language>en-us</language>
     <projectUrl>http://imaginaryrealities.github.com/MSBuildExtensions</projectUrl>
