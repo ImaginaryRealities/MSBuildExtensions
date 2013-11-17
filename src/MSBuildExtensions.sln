@@ -1,11 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+# Visual Studio 2013
+VisualStudioVersion = 12.0.21005.1
+MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{068B98D4-099B-4FC6-95C9-22403B85E6FA}"
 	ProjectSection(SolutionItems) = preProject
 		.nuget\NuGet.Config = .nuget\NuGet.Config
 		.nuget\NuGet.exe = .nuget\NuGet.exe
-		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Build Process", "Build Process", "{23158A8E-E476-4CBB-B383-484482467671}"
@@ -19,6 +20,9 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MSBuildExtensionsUnitTests", "MSBuildExtensionsUnitTests\MSBuildExtensionsUnitTests.csproj", "{EECDA735-3BEC-4855-A999-AB8044D20422}"
 EndProject
 Project("{7CF6DF6D-3B04-46F8-A40B-537D21BCA0B4}") = "Help", "Help\Help.shfbproj", "{8C20AB3A-155F-4B9F-BF17-CE27BA13F816}"
+	ProjectSection(ProjectDependencies) = postProject
+		{EB387A8B-ECE1-4A8C-BD36-7B0809AC1E59} = {EB387A8B-ECE1-4A8C-BD36-7B0809AC1E59}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
